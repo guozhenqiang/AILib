@@ -62,5 +62,5 @@ if __name__ == '__main__':
 
         ## step 4: show the result
         print("step 4: show the result...")
-        print('The classify accuracy is: %.3f%%' % (accuracy * 100))
+        print('分类准确率: %.3f%%' % (accuracy * 100))
         showLogRegres(LogRegModel.weights, train_x, train_y)
