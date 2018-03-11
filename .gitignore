@@ -1,0 +1,43 @@
+﻿# kdiff3 ignore
+*.orig
+
+# maven ignore
+target/
+
+# eclipse ignore
+.settings/
+.project
+.classpath
+# fatjar ignore
+.fatjar
+
+# idea ignore
+.idea/
+*.ipr
+*.iml
+*.iws
+airport_train_poi_info
+sight_data
+hotel_data
+sight_baiduLatLng
+sight_baiduLatLngDiff
+
+TestTemp.java
+
+# temp ignore
+*.log
+*.cache
+*.diff
+*.patch
+*.tmp
+
+# system ignore
+.DS_Store
+Thumbs.db
+# package ignore (optional)
+# *.jar
+# *.war
+# *.zip
+# *.tar
+# *.tar.gz
+/bin/
