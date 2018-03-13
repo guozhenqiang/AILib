@@ -20,8 +20,8 @@ x = tf.placeholder(tf.float32, [None, 1], name='x_in')
 y = tf.placeholder(tf.float32, [None, 1], name='y_in')
 
 # 定义网络结构，这里定义两层
-layer1 = LayerUtil.add_layer(x, 1, 10, active_function=tf.nn.relu)
-prediction = LayerUtil.add_layer(layer1, 10, 1)
+layer1 = LayerUtil.add_layer(x, 1, 10, n_layer=1, active_function=tf.nn.relu)
+prediction = LayerUtil.add_layer(layer1, 10, 1, n_layer=2)
 # 定义损失函数
 loss = tf.reduce_mean(tf.reduce_sum(tf.square(y - prediction), reduction_indices=[1]))
 # 定义优化算法，这里采用梯度下降
