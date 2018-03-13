@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 import tensorflow as tf
-import numpy as np
 from dl.util.LayerUtil import LayerUtil
 from dl.util.ModelEvaluationUtil import ModelEvaluationUtil
 from tensorflow.examples.tutorials.mnist import input_data
