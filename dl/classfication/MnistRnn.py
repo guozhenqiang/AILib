@@ -40,7 +40,7 @@ biases = {
 #定义RNN网络结构
 def RNN(X, weights, biases):
     # 原始的X是3维数据, 需要把它变成2维数据才能使用 weights 的矩阵乘法
-    # X ==> (128 batch * 28 steps * 28 inputs)
+    # X ==> (128 batch * 28 steps , 28 inputs)
     X = tf.reshape(X, [-1, n_inputs])
     X_in = tf.matmul(X, weights['in']) + biases['in']
     # 重新换回3维 X_in ==> (128 batch, 28 steps, 128 hidden)
@@ -71,6 +71,9 @@ if __name__ == '__main__':
         step = 0
         while step * batch_size < training_iters:
             batch_xs, batch_ys = mnist.train.next_batch(batch_size)
+            print(batch_xs[1])
+            print(batch_ys[1])
+            exit(0)
             batch_xs = batch_xs.reshape([batch_size, n_steps, n_inputs])
             sess.run([train], feed_dict={x: batch_xs, y: batch_ys})
             if step % 20 == 0:
