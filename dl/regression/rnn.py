@@ -111,12 +111,11 @@ class LSTMRNN():
 if __name__ == '__main__':
     model = LSTMRNN(TIME_STEPS, INPUT_SIZE, OUTPUT_SIZE, CELL_SIZE, BATCH_SIZE)
     with tf.Session() as sess:
+        # 在tensorboard中记录变量的变化在logs的父目录下开启tensorboard服务$ tensorboard --logdir='logs'
         merged = tf.summary.merge_all()
         writer = tf.summary.FileWriter("logs", sess.graph)
         init = tf.global_variables_initializer()
         sess.run(init)
-        # relocate to the local dir and run this line to view it on Chrome (http://0.0.0.0:6006/):
-        # $ tensorboard --logdir='logs'
 
         plt.ion()
         plt.show()
