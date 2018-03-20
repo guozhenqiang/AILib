@@ -5,6 +5,7 @@ import webbrowser
 from urllib.request import urlretrieve
 from bs4 import BeautifulSoup
 
+
 def send_get():
     param={'wd': 'python'}
     r = requests.get('http://www.baidu.com/s', params=param)
@@ -17,10 +18,12 @@ def send_post():
     r = requests.post('http://pythonscraping.com/files/processing.php', data=data)
     print(r.text)
 
+
 def send_poat_file():
     file = {'uploadFile': open('23225597_4097bf09ff.jpg', 'rb')}
     r = requests.post('http://pythonscraping.com/files/processing2.php', files=file)
     print(r.text)
+
 
 def test_cookie():
     payload = {'username': 'Morvan', 'password': 'password'}
