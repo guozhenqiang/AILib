@@ -21,7 +21,6 @@ def crawl(url):
 def parse(html):
     soup = BeautifulSoup(html, 'lxml')
     urls = soup.find_all('a', {"href": re.compile('^/.+?/$')})
-    print(urls)
     title = soup.find('h1').get_text().strip()
     page_urls = set([urljoin(base_url, url['href']) for url in urls])   # 去重
     url = soup.find('meta', {'property': "og:url"})['content']
@@ -37,10 +36,10 @@ def normal_spider():
         if len(seen) > 20:
             break
 
-        print('\nDistributed Crawling...')
+        print('\nnormal Crawling...')
         htmls = [crawl(url) for url in unseen]
 
-        print('\nDistributed Parsing...')
+        print('\nnormal Parsing...')
         results = [parse(html) for html in htmls]
 
         print('\nAnalysing...')
@@ -51,7 +50,7 @@ def normal_spider():
             print(count, title, url)
             count += 1
             unseen.update(page_urls - seen)  # get new url to crawl
-    print('Total time: %.1f s' % (time.time() - t1,))  # 53 s
+    print('Total time: %.1f s' % (time.time() - t1,))  # 67.4 s
 
 
 def distributed_spider():
@@ -78,14 +77,13 @@ def distributed_spider():
             print(count, title, url)
             count += 1
             unseen.update(page_urls - seen)  # get new url to crawl
-    print('Total time: %.1f s' % (time.time() - t1,))  # 16 s !!!
-
+    print('Total time: %.1f s' % (time.time() - t1,))  # 19.2 s !!!
 
 
 
 if __name__ == '__main__':
     # normal_spider()
-    # distributed_spider()
-    print(parse(crawl(base_url)))
+    distributed_spider()
+    # print(parse(crawl(base_url)))
     pass
 

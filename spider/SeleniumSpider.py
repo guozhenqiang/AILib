@@ -3,6 +3,7 @@
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 
+
 def selenium_spider():
 
     driver = webdriver.Firefox()  # 打开浏览器
