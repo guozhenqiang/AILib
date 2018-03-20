@@ -8,6 +8,7 @@ import skimage.io
 import skimage.transform
 import matplotlib.pyplot as plt
 
+
 def download():     # download tiger and kittycat image
     categories = ['tiger', 'kittycat']
     for category in categories:
