@@ -23,7 +23,6 @@ def job2():
 
 
 def no_lock():
-    A = 0
     t1 = threading.Thread(target=job1)
     t2 = threading.Thread(target=job2)
     t1.start()

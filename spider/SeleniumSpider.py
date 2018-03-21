@@ -32,8 +32,8 @@ def selenium_spider():
 
 def recommend_resume():
 
-    driver = webdriver.Firefox()  # 打开浏览器
-    driver.get("http://neitui.zhiye.com/qunar#recommendjobs")
+    driver = webdriver.Chrome()  # 打开浏览器
+    driver.get("http://neitui.zhiye.com/qunar#vertify%2Fwechat")
     print('http://neitui.zhiye.com/qunar#recommendjobs  end')
     str = input("Enter your input: ")
     driver.get("http://neitui.zhiye.com/qunar#recommendjobs/jobdetail?jobId=620164468")
@@ -45,7 +45,12 @@ def recommend_resume():
     print('推荐简历    end')
     str = input("Enter your input: ")
 
-    xx = driver.find_element_by_class_name('neitui_title dl_menutit modelName')
+    # xx = driver.find_element_by_class_name('neitui_title dl_menutit modelName')
+    fram = driver.find_element_by_tag_name('html')
+    print(fram.get_attribute('innerHTML'))
+    # name=fram.find_element_by_xpath("//input[@name='RecruitmentPortalPersonProfile_Name']")
+    # name = fram.find_element_by_tag_name("#document")
+
     # name = driver.find_element_by_id('4c037148-140a-4c2b-b87a-b97609215d70')
     # email = driver.find_element_by_id('67a5c587-4f90-4ae7-819f-eb3dba9ea399')
     # phone = driver.find_element_by_id('acb9b67f-9643-41fb-a7fe-5ff8d742ccdf')
@@ -97,9 +102,9 @@ def test_static():
 
 if __name__ == '__main__':
     # selenium_spider()
-    # recommend_resume()
+    recommend_resume()
     # test()
-    test_static()
+    # test_static()
 
     pass
 
