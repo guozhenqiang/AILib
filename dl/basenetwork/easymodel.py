@@ -29,10 +29,12 @@ train = tf.train.GradientDescentOptimizer(0.1).minimize(loss)
 # 初始化所有变量
 init = tf.global_variables_initializer()
 
-if __name__ == '__main__':
+saver = tf.train.Saver()
+
+def train_model(path):
     with tf.Session() as sess:
         sess.run(init)
-        for i in range(20001):
+        for i in range(10001):
             sess.run(train, feed_dict={x: x_data, y: y_data})
             if i % 100 == 0:
                 # 每100轮刷新一次图形
@@ -45,5 +47,22 @@ if __name__ == '__main__':
                 lines = ax.plot(x_data, prediction_value, 'r-', lw=5)
                 plt.pause(0.5)
                 print(i, sess.run(loss, feed_dict={x: x_data, y: y_data}))
+        saver.save(sess, path)
+
+
+def use_model(path, input):
+    input = np.reshape(input, (1, 1))
+    with tf.Session() as sess:
+        saver.restore(sess, path)
+        return sess.run(prediction, feed_dict={x: input})
+
+
+
+
+if __name__ == '__main__':
+    path = 'd:\\tensorflow\\model\\easymodel.ckpt'
+    # train_model(path)
+    input = np.arange(1)
+    print(use_model(path, input))
 
     pass
